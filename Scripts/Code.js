@@ -1,0 +1,5 @@
+widnow.onload = function () {
+
+    
+
+}

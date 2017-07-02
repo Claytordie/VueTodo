@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Playing with Vue</title>
+    <link rel="stylesheet" href="Styles/main.css">
+    <link rel="stylesheet" href="Styles/material.min.css">
+    <script src="Scripts/vue.js"></script>
+    <script src="Scripts/material.min.js"></script>
+</head>
+
+<body>
+    <div class="mdl-layout mdl-js-layout">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title">Todo With Vue</span>
+            </div>
+        </header>
+        <main class="mdl-layout__content">
+            <div class="page-content" id="tasklist">
+                <div class="mdl-grid">
+                </div>
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--2-col"></div>
+                    <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--3-col-desktop">
+                        <form action="#">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="TaskName" v-model="todoName">
+                                <label class="mdl-textfield__label" for="TaskName">Todo Name</label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--3-col-desktop">
+                        <form action="#">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="Task" v-model="todoDetail">
+                                <label class="mdl-textfield__label" for="Task">Optional Description...</label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--3-col-desktop">
+                        <button v-on:click="addtask" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-button mdl-js-ripple-effect">
+                                Add Task
+                            </button>
+                    </div>
+                    <div class="mdl-cell mdl-cell--2-col"></div>
+                </div>
+                <div>
+                    <div class="mdl-grid">
+                        <div v-for="item in items">
+                            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
+                                <div v-bind:style="{ backgroundColor: item.bgColor }" class="mdl-card__title mdl-card--expand title-text">
+                                    <h4>
+                                        {{item.text}}
+                                    </h4>
+                                </div>
+                                <div class="mdl-card__supporting-text">
+                                    {{item.description}}
+                                </div>
+                                <div class="mdl-card__actions mdl-card--border">
+                                    <button v-on:click="removetask(item)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-button mdl-js-ripple-effect">
+                                        Delete
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="Scripts/Components.js"></script>
+</body>
+</html>
